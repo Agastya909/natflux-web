@@ -1,7 +1,33 @@
 "use client";
+import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 export default function Login() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPw] = useState<string>("");
   const router = useRouter();
+
+  const login = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:4000/auth/user/login",
+        { email, password }
+      );
+      const userData = {
+        id: response.data.data.id,
+        name: response.data.data.name,
+        email: response.data.data.email,
+        pfp_path: response.data.data.pfp_path,
+      };
+      localStorage.setItem("jwt", response.data.token);
+      localStorage.setItem("user", JSON.stringify(userData));
+      router.replace("/home");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       {/* title */}
@@ -10,7 +36,7 @@ export default function Login() {
       </h1>
       {/* card */}
       <section
-        className="w-1/5 flex flex-col self-center py-3 my-6 border rounded-lg p-4 shadow shadow-zinc-900"
+        className="max-w-[480px] flex flex-col self-center py-3 my-6 border rounded-lg p-4 shadow shadow-zinc-900"
         style={{ borderColor: "#232323" }}
       >
         <label
@@ -22,8 +48,10 @@ export default function Login() {
         <input
           type="text"
           name="email"
-          id=""
-          className="rounded-md px-3 py-1.5 my-1 text-gray-900"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          id="email"
+          className="rounded-md px-3 py-1.5 my-1 text-white"
           style={{ backgroundColor: "#181818" }}
         />
         <label
@@ -35,11 +63,14 @@ export default function Login() {
         <input
           type="password"
           name="password"
-          id=""
-          className="rounded-md px-3 py-1.5 my-1 text-black"
+          value={password}
+          onChange={(e) => setPw(e.target.value)}
+          id="password"
+          className="rounded-md px-3 py-1.5 my-1 text-white"
           style={{ backgroundColor: "#181818" }}
         />
-        <div className="flex flex-row items-center mt-2">
+        {/* add remember me once authentication is changed to more secure one */}
+        {/* <div className="flex flex-row items-center mt-2">
           <input
             type="checkbox"
             name="rememberme"
@@ -52,9 +83,10 @@ export default function Login() {
           >
             Remember me
           </label>
-        </div>
+        </div> */}
         <button
           type="submit"
+          onClick={login}
           className="flex w-full mt-4 mb-1  justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Sign in

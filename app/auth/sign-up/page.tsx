@@ -5,17 +5,17 @@ import { useRouter } from "next/navigation";
 export default function Login() {
   const router = useRouter();
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen max-w-[480px] m-auto">
       {/* title */}
-      <div className="w-1/5 flex flex-col">
+      <div className="flex flex-row items-center">
         <button onClick={() => router.back()}>
           <Image src="/left.png" alt="back-arrow" height={35} width={35} />
         </button>
-        <p className="flex-1 text-center text-lg tracking-wide">Create new account</p>
+        <p className="flex-1 text-center text-lg tracking-wide ml-6">Create new account</p>
       </div>
       {/* card */}
       <section
-        className="w-1/5 flex flex-col self-center my-6 border rounded-lg px-4 py-2 shadow shadow-zinc-900"
+        className="flex flex-col self-center my-6 border rounded-lg px-4 py-2 shadow shadow-zinc-900"
         style={{ borderColor: "#232323" }}
       >
         <label
