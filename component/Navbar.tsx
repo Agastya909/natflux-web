@@ -28,7 +28,7 @@ export default function Navbar() {
     }
   }, []);
   return (
-    <div className="flex flex-row pb-4" style={{ alignItems: "baseline" }}>
+    <div className="flex flex-row justify-between p-4">
       <Link href="/home">
         <h1
           className="font-semibold tracking-wider"
@@ -45,8 +45,8 @@ export default function Navbar() {
         <Link href="/search">
           <p className="text-lg py-1 px-3 hover">Search</p>
         </Link>
-        <Link href="/profile" className="hover">
-          <p className="text-lg bg-zinc-900 py-1 px-3">Hi, {user.name}</p>
+        <Link href="/profile">
+          <p className="text-lg bg-zinc-900 py-1 px-3 hover">Hi, {user.name}</p>
         </Link>
       </div>
     </div>

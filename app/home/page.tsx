@@ -2,8 +2,9 @@
 import Navbar from "@/component/Navbar";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import Router from "next/router";
 import { useEffect, useState } from "react";
 
 type VideoData = {
@@ -51,7 +52,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col items-center m-4">
+    <div className="flex flex-col m-4">
       <Navbar />
       <div className="w-full px-4">
         {genre.map((genre, index) => {
@@ -64,25 +65,27 @@ export default function Login() {
                 {videoData
                   .filter((video) => video.genre.includes(genre))
                   .map((video, index) => (
-                    <div
-                      key={video.id}
-                      className="w-64 mr-4 relative rounded-lg sm:w-50 sm:h-50 hover:cursor-pointer"
-                      onClick={() => {
-                        localStorage.setItem("videoId", video.id);
-                        router.push("/video");
+                    <Link
+                      href={{
+                        pathname: "/video",
+                        query: {
+                          id: video.id,
+                        },
                       }}
+                      key={video.id}
+                      className="w-64 mr-4 relative rounded-lg sm:w-50 sm:h-50 hover:cursor-pointer hover:scale-105 hover:shadow-zinc-800 hover:shadow-lg  transition"
                     >
                       <Image
                         src={video.thumbnail_path}
-                        height={256}
-                        width={256}
-                        className="w-full h-36 rounded-lg lg:h-48"
+                        height={180}
+                        width={384}
+                        className="w-96 h-40 rounded-lg"
                         alt={video.title}
                       />
                       <h2 className="bg-gradient-to-t from-[#00000085] text-lg font-bold tracking-wide pt-2 px-2 absolute bottom-0 w-full rounded-b-lg">
                         {video.title}
                       </h2>
-                    </div>
+                    </Link>
                   ))}
               </div>
             </div>

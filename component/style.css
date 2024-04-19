@@ -1,14 +1,10 @@
 .hover:hover {
-  background-color: rgb(35, 35, 35);
   border-radius: 5px;
   animation: scales 0.2s ease-out forwards;
 }
 
 @keyframes scales {
-  0% {
-    transform: scale(1);
-  }
   100% {
-    transform: scale(1.05);
+    background-color: rgb(35, 35, 35);
   }
 }
