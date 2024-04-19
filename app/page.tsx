@@ -25,18 +25,19 @@ export default function Home() {
         };
         localStorage.setItem("user", JSON.stringify(userData));
         router.replace("/home");
+      } else {
+        router.replace("/auth");
       }
     } catch (error) {
-      console.log(error);
       router.replace("/auth");
     }
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <p className="text-center text-white font-bold text-3xl">
-        Hello home page
+    <div className="flex items-center justify-center h-screen">
+      <p className="text-center text-white font-bold text-5xl animate-bounce">
+        Natflux
       </p>
-    </main>
+    </div>
   );
 }

@@ -73,7 +73,7 @@ export default function Login() {
         </form>
       </div>
       {loading === "loading" ? (
-        <p className="text-center text-xl tracking-wide font-semibold transition">
+        <p className="text-center text-2xl tracking-wide font-semibold animate-pulse">
           Searching for Videos
         </p>
       ) : null}
