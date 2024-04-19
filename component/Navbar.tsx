@@ -1,7 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import "./style.css";
 
 type User = {
@@ -12,7 +10,6 @@ type User = {
 };
 
 export default function Navbar() {
-  const router = useRouter();
   const [user, setUser] = useState<User>({
     email: "",
     id: "",
@@ -46,7 +43,7 @@ export default function Navbar() {
           <p className="text-lg py-1 px-3 hover">Search</p>
         </Link>
         <Link href="/profile">
-          <p className="text-lg bg-zinc-900 py-1 px-3 hover">Hi, {user.name}</p>
+          <p className="text-lg py-1 px-3 hover">{user.name}</p>
         </Link>
       </div>
     </div>
