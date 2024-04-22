@@ -70,20 +70,6 @@ export default function Login() {
           style={{ backgroundColor: "#181818" }}
         />
         {/* add remember me once authentication is changed to more secure one */}
-        {/* <div className="flex flex-row items-center mt-2">
-          <input
-            type="checkbox"
-            name="rememberme"
-            id="rememberme"
-            className="mr-2"
-          />
-          <label
-            htmlFor="password"
-            className="block text-sm font-thin mt-2 mb-1"
-          >
-            Remember me
-          </label>
-        </div> */}
         <button
           type="submit"
           onClick={login}

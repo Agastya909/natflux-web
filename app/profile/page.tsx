@@ -29,21 +29,26 @@ export default function Home() {
     }
   }, []);
   return (
-    <div className="flex flex-col items-center justify-center m-4">
+    <div className="m-4 ">
+      {/* <button onClick={() => router.back()}>
+        <Image src="/left.png" alt="back-arrow" height={35} width={35} />
+      </button> */}
       <Navbar />
-      <div className="flex flex-col items-center">
-        <div className="my-10 flex flex-col items-center">
-          <Image
-            src={user.pfp_path}
-            height={144}
-            width={144}
-            alt={user.name}
-            style={{ height: 144, width: 144, borderRadius: 144 }}
-          />
-          <p className="text-center text-2xl tracking-wide font-semibold mt-4">
-            {user.name}
-          </p>
-          <p className="mt-2 text-zinc-300">{user.email}</p>
+      <div className="flex flex-col items-center justify-center max-w-lg mx-auto">
+        <div className="flex flex-col items-center">
+          <div className="my-10 flex flex-col items-center">
+            <Image
+              src={user.pfp_path}
+              height={144}
+              width={144}
+              alt={user.name}
+              style={{ height: 144, width: 144, borderRadius: 144 }}
+            />
+            <p className="text-center text-2xl tracking-wide font-semibold mt-4">
+              {user.name}
+            </p>
+            <p className="mt-2 text-zinc-300">{user.email}</p>
+          </div>
         </div>
       </div>
     </div>

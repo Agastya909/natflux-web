@@ -25,7 +25,14 @@ export default function Navbar() {
     }
   }, []);
   return (
-    <div className="flex flex-row justify-between p-4">
+    <div
+      className="p-4"
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}
+    >
       <Link href="/home">
         <h1
           className="font-semibold tracking-wider"
@@ -42,8 +49,11 @@ export default function Navbar() {
         <Link href="/search">
           <p className="text-lg py-1 px-3 hover">Search</p>
         </Link>
+        <Link href="/video/upload">
+          <p className="text-lg py-1 px-3 hover flex-1">Upload</p>
+        </Link>
         <Link href="/profile">
-          <p className="text-lg py-1 px-3 hover">{user.name}</p>
+          <p className="text-lg py-1 px-3 hover flex-1">{user.name}</p>
         </Link>
       </div>
     </div>
